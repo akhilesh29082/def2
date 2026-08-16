@@ -1010,6 +1010,64 @@ transform:none !important;
   }
 
 } 
+ /* =========================================================
+   MOBILE TECHNOLOGY DROPDOWN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    /* Allow the whole technology section to expand */
+    .tech-list {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Each card gets its own natural height */
+    .tech-row {
+        flex: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        cursor: pointer;
+    }
+
+    /* Normal closed state */
+    .tech-row p {
+        display: none !important;
+        max-height: none !important;
+        overflow: visible !important;
+        opacity: 0;
+        margin-top: 0;
+    }
+
+    /* Open state */
+    .tech-row.active p {
+        display: block !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        margin-top: 12px !important;
+    }
+
+    /* Open card */
+    .tech-row.active {
+        background: rgba(138,109,30,0.06);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Heading */
+    .tech-row.active .tech-title h3 {
+        color: var(--accent);
+    }
+
+    /* + becomes × */
+    .tech-row.active .tech-title span {
+        transform: rotate(45deg);
+    }
+
+} 
 </style>
 </head>
 <body class="preload-lock">
@@ -1585,5 +1643,33 @@ setTimeout(() => preloader.remove(), 650);
 setTimeout(reveal, 3300);
 })();
 </script>
+  <script>
+/* =========================================================
+   MOBILE TECHNOLOGY DROPDOWN
+   ========================================================= */
+
+document.addEventListener('click', function(e) {
+
+    const row = e.target.closest('.tech-row');
+
+    if (!row) return;
+
+    /* Only use this behavior on mobile */
+    if (window.innerWidth <= 900) {
+
+        /* Close other cards */
+        document.querySelectorAll('.tech-row').forEach(function(otherRow) {
+            if (otherRow !== row) {
+                otherRow.classList.remove('active');
+            }
+        });
+
+        /* Open / close clicked card */
+        row.classList.toggle('active');
+    }
+
+});
+</script>
+  
 </body>
 </html>
