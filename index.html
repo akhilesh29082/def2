@@ -572,8 +572,9 @@
   .cookie-actions button.accept{background:var(--ink); color:var(--bg);}
   .cookie-actions button.manage{border-color:transparent; color:var(--muted); padding:6px;}
 /* TECHNOLOGY DROPDOWN */
-
-/* ---------- TECHNOLOGY HOVER + DROPDOWN ---------- */
+/* =========================================================
+   TECHNOLOGY DROPDOWN
+   ========================================================= */
 
 .tech-row {
     cursor: pointer;
@@ -587,21 +588,13 @@
 
     transition:
         background 0.35s ease,
-        padding-left 0.35s ease,
-        transform 0.35s ease;
+        padding-left 0.35s ease;
 }
 
 .tech-row:last-child {
     border-bottom: none;
 }
 
-/* Hover effect */
-.tech-row:hover {
-    background: rgba(138,109,30,0.06);
-    padding-left: 20px;
-}
-
-/* Title */
 .tech-title {
     display: flex;
     justify-content: space-between;
@@ -616,13 +609,6 @@
         transform 0.3s ease;
 }
 
-/* Heading changes slightly on hover */
-.tech-row:hover .tech-title h3 {
-    color: var(--accent);
-    transform: translateX(4px);
-}
-
-/* Plus icon */
 .tech-title span {
     font-size: 24px;
     color: var(--accent);
@@ -635,45 +621,115 @@
         color 0.3s ease;
 }
 
-/* Plus rotates slightly when hovering */
-.tech-row:hover .tech-title span {
-    transform: rotate(90deg);
-}
-
-/* Description */
+/* DESCRIPTION */
 .tech-row p {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
 
     transition:
-        max-height 0.5s ease,
-        opacity 0.4s ease,
-        margin-top 0.4s ease;
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin-top 0.3s ease;
 }
 
-/* SHOW TEXT WHEN HOVERING */
-.tech-row:hover p {
-    max-height: 150px;
-    opacity: 1;
-    margin-top: 12px;
+
+/* =========================================================
+   DESKTOP — HOVER
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    .tech-row:hover {
+        background: rgba(138,109,30,0.06);
+        padding-left: 20px;
+    }
+
+    .tech-row:hover .tech-title h3 {
+        color: var(--accent);
+        transform: translateX(4px);
+    }
+
+    .tech-row:hover .tech-title span {
+        transform: rotate(90deg);
+    }
+
+    .tech-row:hover p {
+        max-height: 150px;
+        opacity: 1;
+        margin-top: 12px;
+    }
+
 }
 
-/* Open row gets accent background */
-.tech-row.active {
-    background: rgba(138,109,30,0.06);
+
+/* =========================================================
+   MOBILE — TAP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .tech-list {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .tech-row {
+        flex: 0 0 auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        padding: 26px 4px;
+        justify-content: flex-start;
+    }
+
+    /* IMPORTANT:
+       Disable the desktop hover behavior on phones */
+    .tech-row:hover {
+        background: transparent;
+        padding-left: 4px;
+    }
+
+    .tech-row:hover p {
+        max-height: 0 !important;
+        opacity: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* CLOSED */
+    .tech-row p {
+        max-height: 0 !important;
+        opacity: 0;
+        overflow: hidden;
+        margin-top: 0;
+    }
+
+    /* OPEN */
+    .tech-row.active {
+        background: rgba(138,109,30,0.06);
+    }
+
+    .tech-row.active .tech-title h3 {
+        color: var(--accent);
+    }
+
+    .tech-row.active .tech-title span {
+        transform: rotate(45deg);
+    }
+
+    .tech-row.active p {
+        max-height: 1000px !important;
+        height: auto !important;
+        opacity: 1 !important;
+        margin-top: 12px !important;
+        overflow: visible !important;
+    }
+
 }
 
-/* Open row heading */
-.tech-row.active .tech-title h3 {
-    color: var(--accent);
-}
-
-/* Open row plus becomes X */
-.tech-row.active .tech-title span {
-    transform: rotate(45deg);
-}
 /* ---------- FULL HERO TYPEWRITER ---------- */
 
 #typewriter {
@@ -1490,7 +1546,28 @@ document.querySelectorAll('.tech-row').forEach(row => {
   });
 
 });
+  
+/* =========================================================
+   MOBILE TECHNOLOGY ACCORDION
+   ========================================================= */
 
+document.querySelectorAll('.tech-row').forEach(function(row) {
+
+    row.addEventListener('click', function() {
+
+        /* Close all other rows */
+        document.querySelectorAll('.tech-row').forEach(function(otherRow) {
+            if (otherRow !== row) {
+                otherRow.classList.remove('active');
+            }
+        });
+
+        /* Open / close the clicked row */
+        row.classList.toggle('active');
+
+    });
+
+});
 
 </script>
 
