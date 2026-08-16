@@ -886,6 +886,43 @@ transform:none !important;
     z-index: 9999;
   }
 }
+ /* ===== MOBILE TECHNOLOGY DROPDOWN FIX ===== */
+@media (max-width: 900px) {
+
+  .tech-row {
+    cursor: pointer;
+  }
+
+  .tech-row p {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    transition: max-height 0.4s ease,
+                opacity 0.3s ease,
+                margin-top 0.4s ease;
+  }
+
+  /* Show description when row is tapped */
+  .tech-row.active p {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 12px;
+  }
+
+  .tech-row.active {
+    background: rgba(138,109,30,0.06);
+  }
+
+  .tech-row.active .tech-title h3 {
+    color: var(--accent);
+  }
+
+  .tech-row.active .tech-title span {
+    transform: rotate(45deg);
+  }
+
+} 
 </style>
 </head>
 <body class="preload-lock">
@@ -1408,7 +1445,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/* MOBILE TECHNOLOGY DROPDOWN */
 
+document.querySelectorAll('.tech-row').forEach(row => {
+
+  row.addEventListener('click', function(e) {
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.classList.toggle('active');
+
+  });
+
+});
 
 </script>
 
