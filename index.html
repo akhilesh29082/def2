@@ -862,7 +862,30 @@ transform:none !important;
 }
 }
 /* ===== END PRELOADER ===== */
+@media (max-width: 900px) {
+  .systems-popup {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    width: 300px;
+    max-width: calc(100vw - 30px);
 
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(10px);
+  }
+
+  .systems-popup.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+    z-index: 9999;
+  }
+}
 </style>
 </head>
 <body class="preload-lock">
@@ -1328,21 +1351,30 @@ transform:none !important;
     });
   }
 
-  /* SYSTEMS POPUP */
-  const sysWrapper = document.querySelector('.section-tag-wrapper');
-  const sysBtn = document.getElementById('systemsBtn');
-  const sysPopup = document.getElementById('systemsPopup');
+ /* SYSTEMS POPUP */
+const sysWrapper = document.querySelector('.section-tag-wrapper');
+const sysBtn = document.getElementById('systemsBtn');
+const sysPopup = document.getElementById('systemsPopup');
 
-  sysBtn.addEventListener('click', function(e){
+if (sysBtn && sysPopup && sysWrapper) {
+
+  sysBtn.addEventListener('click', function(e) {
     e.preventDefault();
+    e.stopPropagation();
+
     sysPopup.classList.toggle('show');
   });
 
-  document.addEventListener('click', function(e){
-    if(!sysWrapper.contains(e.target)){
+  sysPopup.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!sysWrapper.contains(e.target)) {
       sysPopup.classList.remove('show');
     }
   });
+}
 /* TECHNOLOGY DROPDOWN */
 /* ---------- HERO TYPEWRITER EFFECT ---------- */
 /* ---------- HERO TYPEWRITER EFFECT ---------- */
