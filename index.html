@@ -1068,6 +1068,72 @@ transform:none !important;
     }
 
 } 
+ /* =====================================================
+   MOBILE TECHNOLOGY ACCORDION
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .tech-list {
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .tech-row {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: none !important;
+    overflow: visible !important;
+    cursor: pointer;
+    padding: 22px 4px !important;
+  }
+
+  .tech-title {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  /* Hide description initially */
+  .tech-row p {
+    display: none !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 0;
+    margin-top: 0 !important;
+  }
+
+  /* Show description after tapping */
+  .tech-row.active p {
+    display: block !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    margin-top: 12px !important;
+  }
+
+  /* Don't let the desktop hover rule interfere */
+  .tech-row:hover p {
+    max-height: none !important;
+  }
+
+  .tech-row.active {
+    background: rgba(138,109,30,0.06) !important;
+  }
+
+  .tech-row.active .tech-title h3 {
+    color: var(--accent) !important;
+  }
+
+  .tech-row.active .tech-title span {
+    transform: rotate(45deg) !important;
+  }
+
+} 
 </style>
 </head>
 <body class="preload-lock">
@@ -1227,7 +1293,7 @@ transform:none !important;
     <div class="tech-list">
 
       <!-- AI TRACKING -->
-      <div class="tech-row">
+     <div class="tech-row" onclick="this.classList.toggle('active')">
         <div class="tech-title">
           <h3>AI Tracking</h3>
           <span>+</span>
@@ -1241,8 +1307,8 @@ transform:none !important;
 
 
       <!-- COMPUTER VISION -->
-      <div class="tech-row">
-        <div class="tech-title">
+        <div class="tech-row" onclick="this.classList.toggle('active')">
+          <div class="tech-title">
           <h3>Computer Vision</h3>
           <span>+</span>
         </div>
@@ -1255,7 +1321,7 @@ transform:none !important;
 
 
       <!-- SWARM INTELLIGENCE -->
-      <div class="tech-row">
+      <div class="tech-row" onclick="this.classList.toggle('active')">
         <div class="tech-title">
           <h3>Swarm Intelligence</h3>
           <span>+</span>
@@ -1269,7 +1335,7 @@ transform:none !important;
 
 
       <!-- AIRBAG RECOVERY -->
-      <div class="tech-row">
+      <div class="tech-row" onclick="this.classList.toggle('active')">
         <div class="tech-title">
           <h3>Airbag Recovery System</h3>
           <span>+</span>
