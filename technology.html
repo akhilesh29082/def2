@@ -1479,6 +1479,180 @@ footer{padding:90px clamp(20px,5vw,64px) 40px; background:#000000; color:#FFFFFF
   --card-image:
     url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80");
 }
+/* =========================================================
+   MOBILE HERO — KEEP SIDE-BY-SIDE ORIENTATION
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  /* Keep the hero as a side-by-side composition */
+  .hero {
+    position: relative !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 90px 0 40px !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+
+
+  /* RIGHT-SIDE DRONE — KEEP IT THERE */
+  .hero-drone {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+
+    width: 47% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+
+    clip-path: polygon(
+      13% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%
+    ) !important;
+
+    background-position: 58% 52% !important;
+    background-size: cover !important;
+
+    z-index: 1 !important;
+  }
+
+
+  /* LEFT TEXT AREA */
+  .hero-inner {
+    position: relative !important;
+
+    width: 53% !important;
+    max-width: 53% !important;
+
+    margin: 0 !important;
+
+    padding: 0 8px 0 28px !important;
+
+    box-sizing: border-box !important;
+
+    z-index: 6 !important;
+  }
+
+
+  /* TECHNOLOGY / 01 */
+  .hero-meta {
+    width: 100% !important;
+
+    margin-bottom: 30px !important;
+
+    font-size: 8px !important;
+    letter-spacing: 2.5px !important;
+
+    white-space: nowrap !important;
+  }
+
+  .hero-meta-line {
+    width: 28px !important;
+    flex-shrink: 0 !important;
+  }
+
+
+  /* HEADLINE — CONFINED TO WHITE AREA */
+  h1.headline {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+
+    font-size: 38px !important;
+    line-height: .92 !important;
+
+    letter-spacing: -1px !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* DESIGNED FOR THE MODERN */
+  .headline-small {
+    display: block !important;
+
+    width: 100% !important;
+
+    font-size: .62em !important;
+
+    line-height: 1 !important;
+
+    margin-bottom: 10px !important;
+  }
+
+
+  /* WARFIGHTER */
+  .warfighter {
+    display: block !important;
+
+    width: 100% !important;
+
+    font-size: .88em !important;
+
+    line-height: .9 !important;
+
+    letter-spacing: -1px !important;
+
+    transform: none !important;
+
+    margin: 0 !important;
+
+    padding-bottom: 12px !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* GOLD UNDERLINE */
+  .warfighter::after {
+    left: 0 !important;
+    bottom: 0 !important;
+
+    width: 65px !important;
+    height: 2px !important;
+  }
+
+
+  /* DESCRIPTION — ALSO STAY LEFT */
+  .hero-text {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin-top: 32px !important;
+
+    display: block !important;
+  }
+
+
+  .hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+
+    font-size: 12.5px !important;
+    line-height: 1.7 !important;
+
+    color: #3f3f3f !important;
+  }
+
+
+  /* UAV LABEL */
+  .hero-drone-label {
+    right: 12px !important;
+    bottom: 18px !important;
+
+    font-size: 7px !important;
+    letter-spacing: 2px !important;
+  }
+
+}  
 </style>
 </head>
 <body>
