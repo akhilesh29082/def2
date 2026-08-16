@@ -333,10 +333,10 @@
 <!-- ===== HERO ===== -->
 <section class="hero" style="padding-top:0;">
   <div class="wrap hero-inner">
-    <h1 class="headline">LAND</h1>
+    <h1 class="headline">Terrain</h1>
 
     <div class="hero-text">
-      <p class="hero-copy">The WITHX Drone Surveillance System delivers real-time aerial monitoring, reconnaissance, and situational awareness across ground terrain — built for rapid deployment and sustained area observation in security, inspection, and surveillance operations.</p>
+      <p class="hero-copy">The WITHX Drone Surveillance System delivers real-time aerial monitoring, reconnaissance, and situational awareness across ground terrain, built for rapid deployment and sustained area observation in security, inspection, and surveillance operations.</p>
       <div class="hero-actions">
         <a href="#systems" class="btn primary">Explore Systems</a>
         <a href="contact.html" class="btn ghost">Request Brief</a>
@@ -371,7 +371,7 @@
       <div class="cap-head reveal">
         <h2>BUILT FOR<br><span class="fade">THE LAND DOMAIN.</span></h2>
       </div>
-      <p class="doctrine-copy reveal">An aerial surveillance platform engineered for perimeter security, site inspection, and reconnaissance — deployable rapidly across open fields, borders, and rugged terrain.</p>
+      <p class="doctrine-copy reveal">An aerial surveillance platform engineered for perimeter security, site inspection, and reconnaissance, deployable rapidly across open fields, borders, and rugged terrain.</p>
 
       <div class="spec-list reveal">
         <div class="spec-row"><span class="num">01</span><span class="label">Real-Time Video Monitoring</span><i class="fa-solid fa-video"></i></div>
@@ -392,11 +392,11 @@
       <div class="eyebrow"><span class="rule"></span></div>
       <div class="video-head reveal">
         <h2 style="font-family:'Times New Roman', Times, serif; font-weight:700; font-size:clamp(30px,4.4vw,52px); text-transform:uppercase; line-height:1.1; color:#FFFFFF;">SURVEILLANCE <span class="fade">IN ACTION.</span></h2>
-        <p>Watch the WITHX Drone Surveillance System in flight — real-time aerial monitoring and reconnaissance built for rapid deployment across open terrain.</p>
+        <p>Watch the WITHX Drone Surveillance System in flight, real time aerial monitoring and reconnaissance built for rapid deployment across open terrain.</p>
       </div>
 
       <div class="video-frame reveal">
-        <video controls playsinline preload="metadata">
+        <video class="auto-scroll-video" controls playsinline preload="metadata" muted>
           <source src="Airvideo (2).mp4" type="video/mp4">
           Your browser does not support embedded video.
         </video>
@@ -533,6 +533,20 @@
     });
   }, { threshold:0.15 });
   revealEls.forEach(el=> revealObserver.observe(el));
+
+  /* AUTO PLAY / PAUSE VIDEO ON SCROLL (controls stay fully usable) */
+  const scrollVideos = document.querySelectorAll('.auto-scroll-video');
+  const videoObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const vid = entry.target;
+      if(entry.isIntersecting){
+        vid.play().catch(()=>{ /* browser blocked autoplay, user can press play */ });
+      } else {
+        vid.pause();
+      }
+    });
+  }, { threshold:0.5 });
+  scrollVideos.forEach(v=> videoObserver.observe(v));
 </script>
 
 </body>
