@@ -887,29 +887,60 @@ transform:none !important;
   }
 }
  /* ===== MOBILE TECHNOLOGY DROPDOWN FIX ===== */
+
+
+  .tech-row.active {
+    background: rgba(138,109,30,0.06);
+  }
+
+  .tech-row.active .tech-title h3 {
+    color: var(--accent);
+  }
+
+  .tech-row.active .tech-title span {
+    transform: rotate(45deg);
+  }
+
+} 
+ /* ===== MOBILE TECHNOLOGY ACCORDION FIX ===== */
 @media (max-width: 900px) {
 
+  /* Let the technology list grow naturally */
+  .tech-list {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Do NOT force each card to share an equal height */
   .tech-row {
+    flex: 0 0 auto !important;
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
     cursor: pointer;
   }
 
+  /* Closed card */
   .tech-row p {
-    max-height: 0;
+    max-height: 0 !important;
     opacity: 0;
     overflow: hidden;
     margin-top: 0;
-    transition: max-height 0.4s ease,
-                opacity 0.3s ease,
-                margin-top 0.4s ease;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      margin-top 0.3s ease;
   }
 
-  /* Show description when row is tapped */
+  /* Open card */
   .tech-row.active p {
-    max-height: 1000px;
+    max-height: 1000px !important;
     opacity: 1;
     margin-top: 12px;
+    overflow: visible;
   }
 
+  /* Open-card styling */
   .tech-row.active {
     background: rgba(138,109,30,0.06);
   }
@@ -1459,6 +1490,20 @@ document.querySelectorAll('.tech-row').forEach(row => {
   });
 
 });
+/* MOBILE TECHNOLOGY DROPDOWN */
+
+document.querySelectorAll('.tech-row').forEach(row => {
+
+  row.addEventListener('click', function(e) {
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.classList.toggle('active');
+
+  });
+
+});  
 
 </script>
 
