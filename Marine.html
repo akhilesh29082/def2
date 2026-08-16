@@ -357,7 +357,7 @@
       <div class="cap-head reveal">
         <h2>BUILT FOR<br><span class="fade">THE MARINE DOMAIN.</span></h2>
       </div>
-      <p class="doctrine-copy reveal">A water-activated recovery system engineered for marine safety, coastal monitoring, and emergency drone retrieval — deployable across a wide range of unmanned platforms.</p>
+      <p class="doctrine-copy reveal">A water-activated recovery system engineered for marine safety, coastal monitoring, and emergency drone retrieval, deployable across a wide range of unmanned platforms.</p>
 
       <div class="spec-list reveal">
         <div class="spec-row"><span class="num">01</span><span class="label">Water-Activated Deployment</span><i class="fa-solid fa-water"></i></div>
@@ -378,11 +378,11 @@
       <div class="eyebrow"><span class="rule"></span></div>
       <div class="video-head reveal">
         <h2 style="font-family:'Times New Roman', Times, serif; font-weight:700; font-size:clamp(30px,4.4vw,52px); text-transform:uppercase; line-height:1.1; color:#FFFFFF;">PAWRS <span class="fade">IN ACTION.</span></h2>
-        <p>A water-activated, fully passive recovery system. Watch how a dissolvable trigger and CO₂-inflated airbag protect a UAV during an accidental water landing — with zero electronics, sensors, or software required.</p>
+        <p>A water-activated, fully passive recovery system. Watch how a dissolvable trigger and CO₂-inflated airbag protect a UAV during an accidental water landing, with zero electronics, sensors, or software required.</p>
       </div>
 
       <div class="video-frame reveal">
-        <video controls playsinline preload="metadata" poster="drone4.jpg">
+        <video class="auto-scroll-video" controls playsinline preload="metadata" poster="drone4.jpg" muted>
           <source src="seavideo.mp4" type="video/mp4">
           Your browser does not support embedded video.
         </video>
@@ -505,6 +505,20 @@
     });
   }, { threshold:0.15 });
   revealEls.forEach(el=> revealObserver.observe(el));
+
+  /* AUTO PLAY / PAUSE VIDEO ON SCROLL (controls stay fully usable) */
+  const scrollVideos = document.querySelectorAll('.auto-scroll-video');
+  const videoObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const vid = entry.target;
+      if(entry.isIntersecting){
+        vid.play().catch(()=>{ /* browser blocked autoplay, user can press play */ });
+      } else {
+        vid.pause();
+      }
+    });
+  }, { threshold:0.5 });
+  scrollVideos.forEach(v=> videoObserver.observe(v));
 </script>
 
 </body>
