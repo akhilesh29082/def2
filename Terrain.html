@@ -134,7 +134,7 @@
     font-size:clamp(60px, 11vw, 150px); max-width:1050px; color:#fff;
   }
 
-  .hero-text{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-top:38px; flex-wrap:wrap;}
+  .hero-text{display:flex; justify-content:space-between; align-items:center; gap:40px; margin-top:38px; flex-wrap:wrap;}
   .hero-copy{max-width:460px; font-size:16px; line-height:1.75; color:#fff;}
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
   .btn{padding:20px 30px; font-size:13px; letter-spacing:2px; border:1px solid var(--ink); transition:all .25s ease; white-space:nowrap; display:inline-block;}
@@ -276,23 +276,132 @@
     .foot-brand p{max-width:100%;}
     .mobile-nav{padding:100px 24px 50px;}
     .mobile-nav-links a{font-size:clamp(24px,9vw,34px); padding:13px 0;}
-    .cookie-banner{left:14px; right:14px; bottom:14px; padding:20px 20px 18px;}
+  
   }
 
-  /* ---------- COOKIE BANNER ---------- */
-  .cookie-banner{
-    position:fixed; left:20px; right:20px; bottom:20px; z-index:100;
-    max-width:520px; margin:0 auto; background:#FFFFFF; border:1px solid var(--line);
-    padding:26px 26px 22px; transform:translateY(140%); transition:transform .5s ease .4s;
-    box-shadow:var(--card-shadow);
+  /* ---------- CENTER ALL PAGE TEXT ---------- */
+
+  /* Main content */
+  .hero-inner,
+  .hero-text,
+  .hero-copy,
+  .cap-head,
+  .doctrine-copy,
+  .video-head,
+  .video-head p,
+  .marine-body,
+  .viewer-hotspot,
+  .cta,
+  .foot-col,
+  .foot-bottom,
+  .mobile-nav-links,
+  .mnav-cta {
+    text-align: center;
   }
-  .cookie-banner.show{transform:translateY(0);}
-  .cookie-banner p{font-size:14px; line-height:1.7; color:var(--muted); margin-bottom:18px;}
-  .cookie-banner a{text-decoration:underline;}
-  .cookie-actions{display:flex; flex-direction:column; gap:10px;}
-  .cookie-actions button{font-family:inherit; font-size:12px; letter-spacing:2px; padding:14px; border:1px solid var(--ink); cursor:pointer; background:transparent; color:var(--ink);}
-  .cookie-actions button.accept{background:var(--ink); color:var(--bg);}
-  .cookie-actions button.manage{border-color:transparent; color:var(--muted); padding:6px;}
+
+  /* Hero */
+  .hero-inner {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1.headline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-text {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-copy {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Section headings and descriptions */
+  .cap-head {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cap-head h2,
+  .doctrine-copy {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  /* Capability rows */
+  .spec-row .label {
+    text-align: center;
+  }
+
+  /* Video section */
+  .video-head p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-caption {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Viewer hotspots */
+  .viewer-hotspots {
+    text-align: center;
+  }
+
+  /* Footer */
+  .foot-top {
+    
+    text-align: left;
+  }
+
+  .foot-brand p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .foot-contact {
+    align-items: center;
+  }
+
+  .foot-contact a {
+    justify-content: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .foot-bottom {
+    justify-content: left;
+    text-align: left;
+  }
+
+  /* Mobile navigation */
+  .mobile-nav-links a {
+    text-align: center;
+  }
+
+  @media (max-width:900px) {
+    .hero-text {
+      align-items: center;
+    }
+  }
+
+  @media (max-width:560px) {
+    .foot-bottom {
+      align-items: left;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -373,7 +482,7 @@
       <div class="spec-list reveal">
         <div class="spec-row"><span class="num">01</span><span class="label">Real-Time Video Monitoring</span><i class="fa-solid fa-video"></i></div>
         <div class="spec-row"><span class="num">02</span><span class="label">GPS-Based Navigation</span><i class="fa-solid fa-location-crosshairs"></i></div>
-        <div class="spec-row"><span class="num">03</span><span class="label">Autonomous Flight Capability</span><i class="fa-solid fa-drone"></i></div>
+        <div class="spec-row"><span class="num">03</span><span class="label">Autonomous Flight Capability</span><i class="fa-solid fa-plane"></i></div>
         <div class="spec-row"><span class="num">04</span><span class="label">Long-Range Surveillance</span><i class="fa-solid fa-satellite-dish"></i></div>
         <div class="spec-row"><span class="num">05</span><span class="label">Day &amp; Night Operations</span><i class="fa-solid fa-moon"></i></div>
         <div class="spec-row"><span class="num">06</span><span class="label">Live Data Transmission</span><i class="fa-solid fa-tower-broadcast"></i></div>
@@ -398,10 +507,7 @@
           Your browser does not support embedded video.
         </video>
       </div>
-      <div class="video-caption reveal">
-        <div><span class="dot-status"></span></div>
-        
-      </div>
+
     </div>
   </div>
 </section>
@@ -441,10 +547,10 @@
     <div class="foot-col">
       <h4>Contact</h4>
       <div class="foot-contact">
-        <a href="mailto:withx.innovations@gmail.com"><i class="fa-solid fa-envelope"></i> withx.innovations@gmail.com</a>
-        <div class="social-links">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@withx.in" target="_blank"><i class="fa-solid fa-envelope"></i>  support@withx.in</a>
+         <div class="social-links">
           <a href="https://www.linkedin.com/company/withx-innovations/"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://whatsapp.com/withx.innovations"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://wa.me/919067936323" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
           <a href="https://www.instagram.com/withx.in"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
@@ -452,30 +558,11 @@
   </div>
 
   <div class="foot-bottom">
-    <div>© 2026 WITHX INNOVATIONS PRIVATE LIMITED. ALL RIGHTS RESERVED. CIN: U71100PN2026PTC252377</div>
+    <div>© 2026 WITHX INNOVATIONS PRIVATE LIMITED. ALL RIGHTS RESERVED.</div>
   </div>
 </footer>
 
-<div class="cookie-banner" id="cookieBanner">
-  <p>We use cookies to enhance your development experience and keep your data secure. <a href="privacy-policy.html">Privacy Policy</a> · <a href="cookie-policy.html">Cookie Policy</a></p>
-  <div class="cookie-actions">
-    <button class="accept" id="cookieAccept">OK</button>
-    <button class="manage">Manage preferences</button>
-  </div>
-</div>
-
 <script>
-  (function(){
-    var CONSENT_KEY = 'withx_cookie_consent';
-    var banner = document.getElementById('cookieBanner');
-    if (!localStorage.getItem(CONSENT_KEY)) {
-      setTimeout(()=> banner.classList.add('show'), 600);
-    }
-    document.getElementById('cookieAccept').addEventListener('click', ()=>{
-      localStorage.setItem(CONSENT_KEY, 'accepted');
-      banner.classList.remove('show');
-    });
-  })();
 
   /* MOBILE NAV DRAWER */
   const menuBtn = document.getElementById('menuBtn');
