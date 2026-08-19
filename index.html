@@ -955,7 +955,7 @@ transform:none !important;
     transform: rotate(45deg);
   }
 
-} 
+
  /* ===== MOBILE TECHNOLOGY ACCORDION FIX ===== */
 @media (max-width: 900px) {
 
@@ -1133,6 +1133,26 @@ transform:none !important;
 
 } 
 </style>
+
+<script>
+(function(){
+  try{
+    if(localStorage.getItem('withx_defence_preloader_seen') === '1'){
+      document.documentElement.classList.add('withx-returning');
+    }
+  }catch(e){}
+})();
+</script>
+<style>
+html.withx-returning #preloader{
+  display:none !important;
+}
+html.withx-returning body.preload-lock{
+  overflow:auto !important;
+  height:auto !important;
+}
+</style>
+
 </head>
 <body class="preload-lock">
 <div id="preloader">
@@ -1501,14 +1521,26 @@ transform:none !important;
   (function(){
     var CONSENT_KEY = 'withx_cookie_consent';
     var banner = document.getElementById('cookieBanner');
+    var acceptBtn = document.getElementById('cookieAccept');
 
-    // Only show the banner if the user hasn't already accepted before
-    if (!localStorage.getItem(CONSENT_KEY)) {
-      setTimeout(()=> banner.classList.add('show'), 600);
+    if(!banner || !acceptBtn) return;
+
+    var accepted = false;
+    try{
+      accepted = localStorage.getItem(CONSENT_KEY) === 'accepted';
+    }catch(e){}
+
+    // Show only until the visitor accepts once.
+    if(!accepted){
+      setTimeout(function(){
+        banner.classList.add('show');
+      }, 600);
     }
 
-    document.getElementById('cookieAccept').addEventListener('click', ()=>{
-      localStorage.setItem(CONSENT_KEY, 'accepted');
+    acceptBtn.addEventListener('click', function(){
+      try{
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+      }catch(e){}
       banner.classList.remove('show');
     });
   })();
@@ -1695,16 +1727,38 @@ document.querySelectorAll('.tech-row').forEach(function(row) {
 
 <script>
 (function(){
-const preloader = document.getElementById('preloader');
-if(!preloader) return;
-function reveal(){
-preloader.classList.add('hide');
-document.body.classList.remove('preload-lock');
-setTimeout(() => preloader.remove(), 650);
-}
-// let the logo redraw + pop animation finish (~1.7s), then give the
-// welcome text a bit more time on screen before revealing the site
-setTimeout(reveal, 3300);
+  const PRELOADER_KEY = 'withx_defence_preloader_seen';
+  const preloader = document.getElementById('preloader');
+
+  let alreadySeen = false;
+  try{
+    alreadySeen = localStorage.getItem(PRELOADER_KEY) === '1';
+  }catch(e){}
+
+  // Returning visitor: skip the preloader completely.
+  if(alreadySeen){
+    document.body.classList.remove('preload-lock');
+    if(preloader) preloader.remove();
+    return;
+  }
+
+  // First visit: remember it immediately, then play the animation once.
+  try{
+    localStorage.setItem(PRELOADER_KEY, '1');
+  }catch(e){}
+
+  if(!preloader){
+    document.body.classList.remove('preload-lock');
+    return;
+  }
+
+  function reveal(){
+    preloader.classList.add('hide');
+    document.body.classList.remove('preload-lock');
+    setTimeout(() => preloader.remove(), 650);
+  }
+
+  setTimeout(reveal, 3300);
 })();
 </script>
   <script>
