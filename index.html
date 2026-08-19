@@ -94,6 +94,11 @@
   @media (max-width:1000px){ .nav-links, .nav-touch{display:none;} }
   @media (min-width:1001px){ .menu-btn{display:none;} }
 
+
+.nav-link.current{color:#8A6D1E;}
+.mobile-nav-links a.current{color:#8A6D1E;}
+
+  
   /* ---------- MOBILE NAV DRAWER ---------- */
   .mobile-nav{
     position:fixed; inset:0; z-index:95; background:#FFFFFF;
@@ -1207,7 +1212,7 @@ html.withx-returning body.preload-lock{
 <!-- ===== MOBILE NAV DRAWER ===== -->
 <nav class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-links">
-    <a href="index.html" class="active">Home</a>
+    <a href="index.html" class="current">Home</a>
     <a href="about.html">About</a>
     <a href="technology.html">Technology</a>
     <a href="Marine.html">Marine</a>
