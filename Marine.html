@@ -108,8 +108,8 @@
   /* ---------- MOBILE NAV DRAWER ---------- */
   .mobile-nav{
     position:fixed; inset:0; z-index:95; background:#FFFFFF;
-    display:flex; flex-direction:column; justify-content:center;
-    padding:100px clamp(24px,8vw,64px) 50px;
+    display:flex; flex-direction:column; justify-content:flex-start;
+    padding:120px clamp(24px,8vw,64px) 50px;
     transform:translateX(100%);
     transition:transform .45s cubic-bezier(.16,1,.3,1);
     overflow-y:auto;
@@ -117,7 +117,7 @@
   .mobile-nav.open{transform:translateX(0);}
   .mobile-nav-links a{
     display:block; font-family: "Times New Roman", Times, serif; font-weight:600;
-    font-size:clamp(18px,5.5vw,26px); text-transform:uppercase; letter-spacing:0.5px;
+    font-size:clamp(15px,4vw,20px); text-transform:uppercase; letter-spacing:0.5px;
     padding:14px 0; border-bottom:1px solid var(--line); color:#111827;
     transition:color .2s ease;
   }
@@ -255,11 +255,11 @@
     .foot-top{gap:36px; padding-bottom:44px;}
     .foot-brand p{max-width:100%;}
     .mobile-nav{padding:100px 24px 50px;}
-    .mobile-nav-links a{font-size:clamp(24px,9vw,34px); padding:13px 0;}
+    .mobile-nav-links a{font-size:16px; padding:13px 0;}
   }
-  /* ---------- CENTER ALL PAGE TEXT ---------- */
+  /* ---------- CENTER HERO / SECTION TEXT (nav + footer left as index) ---------- */
   .hero-inner, .hero-text, .hero-copy, .cap-head, .doctrine-copy,
-  .video-head, .video-head p, .cta,  .foot-col, .mobile-nav-links, .mnav-cta {
+  .video-head, .video-head p, .cta {
     text-align: center;
   }
 
@@ -303,30 +303,8 @@
     margin-right: 0;
   }
 
-  .foot-contact {
-    align-items: center;
-  }
-
-  .foot-contact a,
-  .social-links {
-    justify-content: center;
-  }
-
-  .foot-bottom {
-    justify-content: left;
-    text-align: left;
-  }
-
-  .mobile-nav-links a {
-    text-align: center;
-  }
-
   @media (max-width:900px) {
     .hero-text { align-items: center; }
-  }
-
-  @media (max-width:560px) {
-    .foot-bottom { align-items: left; }
   }
 
 </style>
@@ -463,13 +441,13 @@
     <div class="foot-col">
       <h4>Systems</h4>
       <a href="Marine.html">WITHX SDSS</a>
-      <a href="Terrain.html">WITHX PAWRS</a>
+      <a href="Terrain.html">PAWRS</a>
     </div>
 
     <div class="foot-col">
       <h4>Contact</h4>
       <div class="foot-contact">
-        <a href="mailto:support@withx.in"><i class="fa-solid fa-envelope"></i> support@withx.in</a>
+        <a href="mailto:with.innovations@gmail.com"><i class="fa-solid fa-envelope"></i> support@withx.in</a>
         <div class="social-links">
           <a href="https://www.linkedin.com/company/withx-innovations/"><i class="fa-brands fa-linkedin"></i></a>
           <a href="https://whatsapp.com/withx.innovations"><i class="fa-brands fa-whatsapp"></i></a>
@@ -480,7 +458,7 @@
   </div>
 
   <div class="foot-bottom">
-    <div>© 2026 WITHX INNOVATIONS PRIVATE LIMITED. ALL RIGHTS RESERVED.</div>
+    <div>© 2026 WITHX INNOVATIONS PRIVATE LIMITED. ALL RIGHTS RESERVED. CIN: U71100PN2026PTC252377</div>
   </div>
 </footer>
 
